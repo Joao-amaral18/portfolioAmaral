@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { List, X } from 'phosphor-react'
 import { motion } from 'framer-motion';
 
@@ -7,9 +7,25 @@ import './Navbar.scss';
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
+    const [sticky, setSticky] = useState({})
+
+    const stickNavbar = () => {
+        if (window !== undefined) {
+            let windowHeight = window.scrollY;
+            windowHeight > 100 ? setSticky({
+                position: "fixed", top: "0", marginTop: "0",
+                transition: "top 5s",
+            }) : setSticky({});
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', stickNavbar);
+        return () => window.removeEventListener('scroll', stickNavbar);
+    }, []);
 
     return (
-        <nav className="app__navbar">
+        <nav className="app__navbar stick" style={sticky}>
             <div className="app__navbar-logo">
                 <img src={images.logo} alt="logo" />
             </div>

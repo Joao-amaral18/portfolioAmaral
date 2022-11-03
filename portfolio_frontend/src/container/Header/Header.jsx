@@ -2,7 +2,6 @@ import React from 'react'
 
 import { motion } from 'framer-motion'
 
-import { AppWrap } from '../../wrapper'
 import { images } from '../../constants'
 import './Header.scss';
 
@@ -23,6 +22,15 @@ const scaleVariants = {
         transition: {
             duration: 1,
             ease: 'easeInOut'
+        }
+    }
+}
+const scaleVariantsCircles = {
+    whileInView: {
+        scale: [0, 1],
+        transition: {
+            duration: 0.5,
+            ease: 'easeIn'
         }
     }
 }
@@ -53,6 +61,7 @@ function Header() {
             </motion.div >
             <motion.div
                 whileInView={{ opacity: [0, 1] }}
+                whileHover={{ scale: [1, 0.9] }}
                 transition={{ duration: 0.5, delayChildren: 0.5 }}
                 className="app__header-img"
             >
@@ -71,13 +80,18 @@ function Header() {
 
             >
                 {[images.redux, images.react, images.sass, images.python, images.typescript].map((circle, index) => (
-                    <div className="circle-cmp app__flex" key={`circle-${index}`}>
+                    <motion.div
+                        whileTap={{ scale: [1, 0.9] }}
+                        whileInView={{ scale: [0, 1] }}
+                        transition={{ duration: 0.5, delayChildren: 0.5, ease: 'easeInOut', staggerChildren: 0.5 }}
+
+                        className="circle-cmp app__flex" key={`circle-${index}`}>
                         <img src={circle} alt="circle" />
-                    </div>
+                    </motion.div>
                 ))}
             </motion.div>
         </div >
     )
 }
 
-export default AppWrap(Header, 'home')
+export default Header

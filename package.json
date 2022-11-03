@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "react-tooltip": "^4.4.3"
   }
 }
