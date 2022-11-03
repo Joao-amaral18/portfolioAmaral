@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { NavgationDots, SocialMedia } from '../components'
+import { NavigationDots, SocialMedia } from '../components'
 
-const AppWrapper = (Component, idName, ClassNames) => function HOC() {
+const AppWrap = (Component, idName, ClassNames) => function HOC() {
     return (
         <div id={idName} className={`app__cotainer ${ClassNames}`}>
             <SocialMedia />
@@ -13,9 +13,9 @@ const AppWrapper = (Component, idName, ClassNames) => function HOC() {
                     <p className='p-text'>All rights reserved</p>
                 </div>
             </div>
-            <NavgationDots active={idName} />
+            <NavigationDots active={idName} />
         </div>
     )
 }
 
-export default AppWrapper
+export default AppWrap
