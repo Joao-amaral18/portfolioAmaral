@@ -106,14 +106,18 @@
         flex-direction: column;
 
         background: url(../../assets/bgWhite.png);
-        background-color: var(--white-color);
+        background-color: var(--secondary-color);
         background-size: cover;
         background-repeat: repeat;
 
         box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
 
         svg {
-            color: var(--secondary-color);
+            color: var(--white-color);
+
+            &:hover {
+                color: var(--lightGray-color);
+            }
         }
 
         ul {
@@ -130,8 +134,24 @@
 
             li {
                 margin: 1rem;
+
+                a {
+                    color: var(--white-color);
+                    text-decoration: none;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: var(--lightGray-color);
+                    }
+
+                }
             }
 
+            @media screen and (min-width: 900px) {
+                display: none;
+            }
         }
     }
 
